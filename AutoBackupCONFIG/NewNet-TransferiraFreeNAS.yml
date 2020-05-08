@@ -2,6 +2,6 @@
 # tasks file for template
 - name: copiando un fichero
   copy:
-    src: /tmp/NewNet_cfg_Splunk.zip
+    src: /tmp/*.*
     dest: /mnt/MOCNAS/Respaldo_Ansible/MOC_DEMOS/NewNet_cfg_Splunk.zip
  
