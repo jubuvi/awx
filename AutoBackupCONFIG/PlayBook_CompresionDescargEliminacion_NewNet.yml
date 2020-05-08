@@ -22,14 +22,3 @@
       file:
         path: /tmp/NewNet_cfg_Splunk.zip
         state: absent
-
-- hosts: localhost
-  tasks:
-    - name: Transfer file from ANSIBLE to NAS
-      become: yes
-      synchronize:
-         mode: push
-         src: /tmp/NewNet_cfg_Splunk.zip
-         dest: /mnt/MOCNAS/Respaldo_Ansible/MOC_DEMOS/
-      delegate_to: 172.23.103.132
-
