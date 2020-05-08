@@ -1,0 +1,24 @@
+---
+
+- hosts: 172.25.118.228
+  tasks:
+  - name: Comprimiendo archivos en formato ZIP 
+    archive:
+      path:
+        - /opt/splunk/etc
+      dest: /tmp/Bancolombia_cgf_Splunk.zip
+      format: zip
+
+- hosts: 172.25.118.228
+  tasks:
+    - name: Descargando backup de sensor en carpeta local "/tmp/"
+      fetch:
+        src: /tmp/Bancolombia_cgf_Splunk.zip
+        dest: /tmp/
+
+- hosts: 172.25.118.228
+  tasks:
+    - name: Eliminando archivo.ZIP en Sensor Bancolombia
+      file:
+        path: /tmp/Bancolombia_cgf_Splunk.zip
+        state: absent

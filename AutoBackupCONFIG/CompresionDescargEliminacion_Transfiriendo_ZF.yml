@@ -1,0 +1,24 @@
+---
+
+- hosts: 10.100.201.225
+  tasks:
+  - name: Comprimiendo archivos de sensor Transfiriendo_ZF en formato ZIP 
+    archive:
+      path:
+        - /opt/splunk/etc
+      dest: /tmp/Transfiriendo_ZF_cfg_Splunk.zip
+      format: zip
+
+- hosts: 10.100.201.225
+  tasks:
+    - name: Descargando backup de sensor en carpeta local "/tmp/"
+      fetch:
+        src: /tmp/Transfiriendo_ZF_cfg_Splunk.zip
+        dest: /tmp/
+
+- hosts: 10.100.201.225
+  tasks:
+    - name: Eliminando archivo.ZIP en Sensor Transfiriendo_ZF
+      file:
+        path: /tmp/Transfiriendo_ZF_cfg_Splunk.zip
+        state: absent

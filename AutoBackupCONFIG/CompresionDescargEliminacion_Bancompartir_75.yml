@@ -1,0 +1,24 @@
+---
+
+- hosts: 10.201.20.75
+  tasks:
+  - name: Comprimiendo archivos de sensor Bancompartir_75 en formato ZIP 
+    archive:
+      path:
+        - /opt/splunk/etc
+      dest: /tmp/Bancompartir_75_cfg_Splunk.zip
+      format: zip
+
+- hosts: 10.201.20.75
+  tasks:
+    - name: Descargando backup de sensor en carpeta local "/tmp/"
+      fetch:
+        src: /tmp/Bancompartir_75_cfg_Splunk.zip
+        dest: /tmp/
+
+- hosts: 10.201.20.75
+  tasks:
+    - name: Eliminando archivo.ZIP en Sensor Bancompartir_75
+      file:
+        path: /tmp/Bancompartir_75_cfg_Splunk.zip
+        state: absent
