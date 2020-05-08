@@ -3,5 +3,5 @@
 - name: copiando un fichero
   copy:
     src: /tmp/*.*
-    dest: /mnt/MOCNAS/Respaldo_Ansible/MOC_DEMOS/NewNet_cfg_Splunk.zip
+    dest: /mnt/MOCNAS/Respaldo_Ansible/MOC_DEMOS/Ansible/
  
